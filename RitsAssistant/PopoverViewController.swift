@@ -15,3 +15,14 @@ class PopoverViewController: NSViewController {
     }
     
 }
+
+extension PopoverViewController {
+    static func freshController() -> PopoverViewController {
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+        let identifier = NSStoryboard.SceneIdentifier("PopoverViewController")
+        guard let viewcontroller = storyboard.instantiateController(withIdentifier: identifier) as? PopoverViewController else {
+            fatalError("Error: Cannot find Popover View Controller.")
+        }
+        return viewcontroller
+    }
+}

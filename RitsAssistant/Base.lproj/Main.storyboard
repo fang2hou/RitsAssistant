@@ -684,7 +684,7 @@
         <!--Popover View Controller-->
         <scene sceneID="SlM-rX-hgg">
             <objects>
-                <viewController storyboardIdentifier="PopoverViewController" id="2oG-TA-t3o" customClass="PopoverViewController" customModule="RitsAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopoverViewController" id="2oG-TA-t3o" customClass="PopoverViewController" customModule="RitsAssistant" sceneMemberID="viewController">
                     <view key="view" id="WMN-Xl-Z3p">
                         <rect key="frame" x="0.0" y="0.0" width="284" height="219"/>
                         <autoresizingMask key="autoresizingMask"/>
