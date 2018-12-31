@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B85D282521DA005C00932170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D282421DA005C00932170 /* AppDelegate.swift */; };
-		B85D282721DA005C00932170 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D282621DA005C00932170 /* ViewController.swift */; };
 		B85D282921DA005E00932170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85D282821DA005E00932170 /* Assets.xcassets */; };
 		B85D282C21DA005E00932170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85D282A21DA005E00932170 /* Main.storyboard */; };
+		B85D283521DA015800932170 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D283421DA015800932170 /* PopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B85D282121DA005C00932170 /* RitsAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RitsAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85D282421DA005C00932170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B85D282621DA005C00932170 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B85D282821DA005E00932170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B85D282B21DA005E00932170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B85D282D21DA005E00932170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B85D282E21DA005E00932170 /* RitsAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RitsAssistant.entitlements; sourceTree = "<group>"; };
+		B85D283421DA015800932170 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +54,9 @@
 			isa = PBXGroup;
 			children = (
 				B85D282421DA005C00932170 /* AppDelegate.swift */,
-				B85D282621DA005C00932170 /* ViewController.swift */,
 				B85D282821DA005E00932170 /* Assets.xcassets */,
 				B85D282A21DA005E00932170 /* Main.storyboard */,
+				B85D283421DA015800932170 /* PopoverViewController.swift */,
 				B85D282D21DA005E00932170 /* Info.plist */,
 				B85D282E21DA005E00932170 /* RitsAssistant.entitlements */,
 			);
@@ -133,7 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B85D282721DA005C00932170 /* ViewController.swift in Sources */,
+				B85D283521DA015800932170 /* PopoverViewController.swift in Sources */,
 				B85D282521DA005C00932170 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +280,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fang2hou.RitsAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -299,6 +300,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fang2hou.RitsAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
