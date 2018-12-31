@@ -14,6 +14,16 @@ class PopoverViewController: NSViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func quitAssistant(_ sender: Any?) {
+        NSApplication.shared.terminate(sender)
+    }
+    
+    @IBAction func openAccountSetting(_ sender: Any?) {
+//        weak var view = AccountViewController.freshController()
+        
+        self.present(AccountViewController.freshController(), animator: NSViewAnimation.EffectName(rawValue: "slideLeft") as! NSViewControllerPresentationAnimator)
+    }
+    
 }
 
 extension PopoverViewController {

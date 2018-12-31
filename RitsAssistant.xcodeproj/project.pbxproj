@@ -11,6 +11,7 @@
 		B85D282921DA005E00932170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85D282821DA005E00932170 /* Assets.xcassets */; };
 		B85D282C21DA005E00932170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85D282A21DA005E00932170 /* Main.storyboard */; };
 		B85D283521DA015800932170 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D283421DA015800932170 /* PopoverViewController.swift */; };
+		B85D283821DA060300932170 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D283621DA060300932170 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		B85D282D21DA005E00932170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B85D282E21DA005E00932170 /* RitsAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RitsAssistant.entitlements; sourceTree = "<group>"; };
 		B85D283421DA015800932170 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		B85D283621DA060300932170 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				B85D283421DA015800932170 /* PopoverViewController.swift */,
 				B85D282D21DA005E00932170 /* Info.plist */,
 				B85D282E21DA005E00932170 /* RitsAssistant.entitlements */,
+				B85D283621DA060300932170 /* AccountViewController.swift */,
 			);
 			path = RitsAssistant;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			files = (
 				B85D283521DA015800932170 /* PopoverViewController.swift in Sources */,
 				B85D282521DA005C00932170 /* AppDelegate.swift in Sources */,
+				B85D283821DA060300932170 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
