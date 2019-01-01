@@ -20,8 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = #selector(togglePopover(_:))
         }
         
+        menuBarPopover.animates = true
         menuBarPopover.contentViewController = PopoverViewController.freshController()
-        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func showPopover(sender: Any?) {
         if let button = statusItem.button {
-            menuBarPopover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            menuBarPopover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
         }
     }
     

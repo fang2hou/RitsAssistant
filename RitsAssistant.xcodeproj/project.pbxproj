@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B826A5BB21DBFE5A006DCCF6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826A5BA21DBFE5A006DCCF6 /* Alamofire.framework */; };
 		B85D282521DA005C00932170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D282421DA005C00932170 /* AppDelegate.swift */; };
 		B85D282921DA005E00932170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85D282821DA005E00932170 /* Assets.xcassets */; };
 		B85D282C21DA005E00932170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85D282A21DA005E00932170 /* Main.storyboard */; };
@@ -14,7 +15,20 @@
 		B85D283821DA060300932170 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D283621DA060300932170 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		B826A5BE21DC0096006DCCF6 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
+		B826A5BA21DBFE5A006DCCF6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		B85D282121DA005C00932170 /* RitsAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RitsAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85D282421DA005C00932170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B85D282821DA005E00932170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,17 +44,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B826A5BB21DBFE5A006DCCF6 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B826A5B921DBFE59006DCCF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B826A5BA21DBFE5A006DCCF6 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B85D281821DA005C00932170 = {
 			isa = PBXGroup;
 			children = (
 				B85D282321DA005C00932170 /* RitsAssistant */,
 				B85D282221DA005C00932170 /* Products */,
+				B826A5B921DBFE59006DCCF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,8 +100,10 @@
 				B85D281D21DA005C00932170 /* Sources */,
 				B85D281E21DA005C00932170 /* Frameworks */,
 				B85D281F21DA005C00932170 /* Resources */,
+				B826A5BF21DC00A9006DCCF6 /* ShellScript */,
 			);
 			buildRules = (
+				B826A5BE21DC0096006DCCF6 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -130,6 +156,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B826A5BF21DC00A9006DCCF6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Alamofire.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B85D281D21DA005C00932170 /* Sources */ = {
@@ -279,12 +326,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 22LM694AT3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = RitsAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fang2hou.RitsAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -299,12 +350,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 22LM694AT3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = RitsAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fang2hou.RitsAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

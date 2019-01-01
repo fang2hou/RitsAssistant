@@ -15,6 +15,12 @@ class AccountViewController: NSViewController {
         // Do view setup here.
     }
     
+    @IBAction func backToMainPopover(_ sender: Any?) {
+        // get AppDelegate of RitsAssistant
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        // change view controller
+        appDelegate.menuBarPopover.contentViewController = PopoverViewController.freshController()
+    }
 }
 
 extension AccountViewController {
