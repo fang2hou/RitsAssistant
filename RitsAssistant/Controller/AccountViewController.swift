@@ -7,20 +7,23 @@
 //
 
 import Cocoa
+import CoreData
 
 class AccountViewController: NSViewController {
 
+    @IBOutlet weak var idText: NSTextField!
+    @IBOutlet weak var passwordText: NSSecureTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
     }
     
     @IBAction func backToMainPopover(_ sender: Any?) {
-        // get AppDelegate of RitsAssistant
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        // change view controller
-        appDelegate.menuBarPopover.contentViewController = PopoverViewController.freshController()
+        dismiss(self)
     }
+    
+    
 }
 
 extension AccountViewController {
