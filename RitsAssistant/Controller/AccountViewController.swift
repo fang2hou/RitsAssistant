@@ -22,8 +22,6 @@ class AccountViewController: NSViewController {
     @IBAction func backToMainPopover(_ sender: Any?) {
         dismiss(self)
     }
-    
-    
 }
 
 extension AccountViewController {
