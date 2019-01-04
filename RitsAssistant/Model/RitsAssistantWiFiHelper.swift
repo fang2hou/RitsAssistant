@@ -35,13 +35,6 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
         }
     }
     
-    var userAgent: fakeUserAgent = .Safari {
-        didSet {
-            print(userAgent.rawValue)
-            headers.updateValue(userAgent.rawValue, forKey: "User-Agent")
-        }
-    }
-    
     var hasConnectedToRitsWebauth: Bool {
         didSet {
             if hasConnectedToRitsWebauth {
@@ -52,6 +45,13 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
             }
             
             delegate?.ritsWifiDidChange(forStatus: hasConnectedToRitsWebauth)
+        }
+    }
+    
+    var userAgent: fakeUserAgent = .Safari {
+        didSet {
+            print(userAgent.rawValue)
+            headers.updateValue(userAgent.rawValue, forKey: "User-Agent")
         }
     }
     
@@ -83,6 +83,7 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
         // start to monitor if wifi ssid changed
         do {
             try wifiClient.startMonitoringEvent(with: .ssidDidChange)
+            try wifiClient.startMonitoringEvent(with: .powerDidChange)
         } catch {
             print("Cannot monitor ssid change event: \(error)")
         }
@@ -109,12 +110,21 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
     }
     
     func ssidDidChangeForWiFiInterface(withName interfaceName: String) {
+        
         if let wifiName = wifiClient.interface(withName: interfaceName)!.ssid() {
             if wifiName == WIFI_NAME {
                 hasConnectedToRitsWebauth = true
             } else {
                 hasConnectedToRitsWebauth = false
             }
+        }
+    }
+    
+    func powerStateDidChangeForWiFiInterface(withName interfaceName: String) {
+        
+        let wifiState = wifiClient.interface(withName: interfaceName)!.powerOn()
+        if !wifiState {
+            hasConnectedToRitsWebauth = false
         }
     }
     

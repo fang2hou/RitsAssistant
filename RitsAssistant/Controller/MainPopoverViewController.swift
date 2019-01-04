@@ -16,24 +16,32 @@ enum connectButtonTypes {
 
 class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAssistantWifiHelperDelegate {
 
-    var internetStatus: Bool = false
-    var ritswifiStatus: Bool = false
+    var internetStatus: Bool = false {
+        didSet {
+            updateUI()
+        }
+    }
+    var ritswifiStatus: Bool = false {
+        didSet {
+            updateUI()
+        }
+    }
     
     let userData = UserData()
     let WiFiHelper = RitsAssistantWiFiHelper()
     
     var buttonType: connectButtonTypes = .viewPassword {
         didSet {
-            switch buttonType {
+            switch self.buttonType {
             case .viewPassword:
-                connectButton.title = "View Rits-Webauth password"
-                connectButton.tag = 0
+                self.connectButton.title = "View Rits-Webauth password"
+                self.connectButton.tag = 0
             case .connect:
-                connectButton.title = "Connect"
-                connectButton.tag = 1
+                self.connectButton.title = "Connect"
+                self.connectButton.tag = 1
             case .disconnect:
-                connectButton.title = "Disconnect"
-                connectButton.tag = 2
+                self.connectButton.title = "Disconnect"
+                self.connectButton.tag = 2
             }
         }
     }
@@ -47,6 +55,8 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
         
         internetStatus = WiFiHelper.internetAvailable
         ritswifiStatus = WiFiHelper.hasConnectedToRitsWebauth
+        
+        WiFiHelper.delegate = self
 
         updateUI()
     }
@@ -97,29 +107,27 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
     
     func internetDidChange(forStatus status: Bool) {
         internetStatus = status
-        updateUI()
     }
     
     func ritsWifiDidChange(forStatus status: Bool) {
         ritswifiStatus = status
-        updateUI()
     }
     
     func updateUI() {
-        if ritswifiStatus {
-            if internetStatus {
-                statusLabel.stringValue = "Connected to Internet."
-                buttonType = .disconnect
+        DispatchQueue.main.async {
+            if self.ritswifiStatus {
+                if self.internetStatus {
+                    self.statusLabel.stringValue = "Connected to Internet."
+                    self.buttonType = .disconnect
+                } else {
+                    self.statusLabel.stringValue = "No Internet with Rits-Webauth."
+                    self.buttonType = .connect
+                }
             } else {
-                statusLabel.stringValue = "No Internet with Rits-Webauth."
-                buttonType = .connect
+                self.statusLabel.stringValue = "Please connect to Rits-Webauth."
+                self.buttonType = .viewPassword
             }
-        } else {
-            statusLabel.stringValue = "Please connect to Rits-Webauth."
-            buttonType = .viewPassword
         }
-        
-        
     }
 }
 
