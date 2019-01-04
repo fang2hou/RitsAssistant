@@ -9,7 +9,9 @@
 import Cocoa
 import CoreWLAN
 
-class MainPopoverViewCotroller: NSViewController {
+class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate{
+
+    let userData = UserData()
     
     @IBOutlet weak var statusLabel: NSTextField!
     
@@ -35,8 +37,17 @@ class MainPopoverViewCotroller: NSViewController {
         NSApplication.shared.terminate(sender)
     }
     
-    @IBAction func openAccountSetting(_ sender: Any?) {
-        presentAsSheet(AccountViewController.freshController())
+    func updateRainbowAccount(id: String, password: String) {
+        userData.rainbowID = id
+        userData.rainbowPassword = password
+        userData.save()
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MainToAccountSetting" {
+            let destinationViewController = segue.destinationController as! AccountSettingViewController
+            destinationViewController.delegate = self
+        }
     }
 }
 

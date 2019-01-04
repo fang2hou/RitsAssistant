@@ -758,7 +758,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="8HZ-oV-XKa" kind="modal" id="u30-Df-P3X"/>
+                                            <segue destination="8HZ-oV-XKa" kind="modal" identifier="MainToAccountSetting" id="u30-Df-P3X"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -853,7 +853,7 @@
         <!--Account Setting-->
         <scene sceneID="eSx-Pq-r13">
             <objects>
-                <viewController title="Account Setting" storyboardIdentifier="AccountViewController" id="8HZ-oV-XKa" customClass="AccountViewController" customModule="RitsAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Account Setting" storyboardIdentifier="AccountViewController" id="8HZ-oV-XKa" customClass="AccountSettingViewController" customModule="RitsAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Rlr-S0-epg">
                         <rect key="frame" x="0.0" y="0.0" width="263" height="133"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -991,7 +991,7 @@
                 </viewController>
                 <customObject id="Xxd-Qk-SqC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-309" y="-38"/>
+            <point key="canvasLocation" x="-344" y="16"/>
         </scene>
     </scenes>
     <resources>

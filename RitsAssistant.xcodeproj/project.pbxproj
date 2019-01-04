@@ -7,27 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90C3907333A4B2B1C12F295C /* Pods_RitsAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C92F56EC24AF8F288773C8F /* Pods_RitsAssistant.framework */; };
 		B85D282521DA005C00932170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D282421DA005C00932170 /* AppDelegate.swift */; };
 		B85D282921DA005E00932170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85D282821DA005E00932170 /* Assets.xcassets */; };
 		B85D282C21DA005E00932170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85D282A21DA005E00932170 /* Main.storyboard */; };
-		B85D283821DA060300932170 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D283621DA060300932170 /* AccountViewController.swift */; };
+		B85D283821DA060300932170 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D283621DA060300932170 /* AccountSettingViewController.swift */; };
 		B888723A21DC934B0073D51E /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = B888723821DC934A0073D51E /* example.png */; };
 		B888723B21DC934B0073D51E /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = B888723921DC934A0073D51E /* Readme.md */; };
+		B888A90C21DF8204007D52A9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888A90B21DF8204007D52A9 /* UserData.swift */; };
 		B8F2A99C21DC733800054091 /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2A99B21DC733800054091 /* MenuBarItem.swift */; };
 		B8F2A99E21DC819C00054091 /* MainPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2A99D21DC819C00054091 /* MainPopoverViewController.swift */; };
 		B8F2A9A121DC89EF00054091 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8F2A99F21DC89EF00054091 /* UserData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B36C56E519B2B7E5E69B185 /* Pods-RitsAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RitsAssistant.release.xcconfig"; path = "Target Support Files/Pods-RitsAssistant/Pods-RitsAssistant.release.xcconfig"; sourceTree = "<group>"; };
+		61E115F7F91125DCCEE6210F /* Pods-RitsAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RitsAssistant.debug.xcconfig"; path = "Target Support Files/Pods-RitsAssistant/Pods-RitsAssistant.debug.xcconfig"; sourceTree = "<group>"; };
+		8C92F56EC24AF8F288773C8F /* Pods_RitsAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RitsAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85D282121DA005C00932170 /* RitsAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RitsAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85D282421DA005C00932170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B85D282821DA005E00932170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B85D282B21DA005E00932170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B85D282D21DA005E00932170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B85D282E21DA005E00932170 /* RitsAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RitsAssistant.entitlements; sourceTree = "<group>"; };
-		B85D283621DA060300932170 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		B85D283621DA060300932170 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
 		B888723821DC934A0073D51E /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
 		B888723921DC934A0073D51E /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		B888A90B21DF8204007D52A9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		B888A90D21DF859F007D52A9 /* RitsAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RitsAssistant.entitlements; path = ../../../../.Trash/RitsAssistant.entitlements; sourceTree = "<group>"; };
 		B8F2A99B21DC733800054091 /* MenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
 		B8F2A99D21DC819C00054091 /* MainPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopoverViewController.swift; sourceTree = "<group>"; };
 		B8F2A9A021DC89EF00054091 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
@@ -38,15 +44,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C3907333A4B2B1C12F295C /* Pods_RitsAssistant.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0CC8D242F37B33DAFFAB31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				61E115F7F91125DCCEE6210F /* Pods-RitsAssistant.debug.xcconfig */,
+				3B36C56E519B2B7E5E69B185 /* Pods-RitsAssistant.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B826A5B921DBFE59006DCCF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C92F56EC24AF8F288773C8F /* Pods_RitsAssistant.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -59,6 +76,7 @@
 				B888723921DC934A0073D51E /* Readme.md */,
 				B85D282221DA005C00932170 /* Products */,
 				B826A5B921DBFE59006DCCF6 /* Frameworks */,
+				8B0CC8D242F37B33DAFFAB31 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,8 +102,8 @@
 		B8F2A99721DC0C0500054091 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				B888A90D21DF859F007D52A9 /* RitsAssistant.entitlements */,
 				B8F2A99F21DC89EF00054091 /* UserData.xcdatamodeld */,
-				B85D282E21DA005E00932170 /* RitsAssistant.entitlements */,
 				B85D282D21DA005E00932170 /* Info.plist */,
 			);
 			path = "Support Files";
@@ -94,7 +112,7 @@
 		B8F2A99821DC0C3500054091 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B85D283621DA060300932170 /* AccountViewController.swift */,
+				B85D283621DA060300932170 /* AccountSettingViewController.swift */,
 				B8F2A99D21DC819C00054091 /* MainPopoverViewController.swift */,
 			);
 			path = Controller;
@@ -105,6 +123,7 @@
 			children = (
 				B85D282421DA005C00932170 /* AppDelegate.swift */,
 				B8F2A99B21DC733800054091 /* MenuBarItem.swift */,
+				B888A90B21DF8204007D52A9 /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B85D283121DA005E00932170 /* Build configuration list for PBXNativeTarget "RitsAssistant" */;
 			buildPhases = (
+				1554FB9742F14E8E2561E1E1 /* [CP] Check Pods Manifest.lock */,
 				B85D281D21DA005C00932170 /* Sources */,
 				B85D281E21DA005C00932170 /* Frameworks */,
 				B85D281F21DA005C00932170 /* Resources */,
+				8853F42DAB0326574A02DDB2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,6 +211,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1554FB9742F14E8E2561E1E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RitsAssistant-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8853F42DAB0326574A02DDB2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RitsAssistant/Pods-RitsAssistant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RitsAssistant/Pods-RitsAssistant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B85D281D21DA005C00932170 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -197,9 +267,10 @@
 			files = (
 				B8F2A9A121DC89EF00054091 /* UserData.xcdatamodeld in Sources */,
 				B8F2A99E21DC819C00054091 /* MainPopoverViewController.swift in Sources */,
+				B888A90C21DF8204007D52A9 /* UserData.swift in Sources */,
 				B8F2A99C21DC733800054091 /* MenuBarItem.swift in Sources */,
 				B85D282521DA005C00932170 /* AppDelegate.swift in Sources */,
-				B85D283821DA060300932170 /* AccountViewController.swift in Sources */,
+				B85D283821DA060300932170 /* AccountSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +405,7 @@
 		};
 		B85D283221DA005E00932170 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61E115F7F91125DCCEE6210F /* Pods-RitsAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "RitsAssistant/Support Files/RitsAssistant.entitlements";
@@ -355,6 +427,7 @@
 		};
 		B85D283321DA005E00932170 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B36C56E519B2B7E5E69B185 /* Pods-RitsAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "RitsAssistant/Support Files/RitsAssistant.entitlements";
