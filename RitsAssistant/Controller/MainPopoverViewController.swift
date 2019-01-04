@@ -9,10 +9,10 @@
 import Cocoa
 import CoreWLAN
 
-class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate{
+class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAssistantWifiHelperDelegate {
 
     let userData = UserData()
-    let WiFiHelper = RAWiFiHelper()
+    let WiFiHelper = RitsAssistantWiFiHelper()
     
     @IBOutlet weak var statusLabel: NSTextField!
     
@@ -28,35 +28,50 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate{
             statusLabel.stringValue = "test"
         }
         
-    }
-    
-    func connectToInternet() {
-        WiFiHelper.testMethod(withId: userData.rainbowID, andPassword: userData.rainbowPassword)
+        WiFiHelper.userAgent = .Chrome
     }
     
     @IBAction func openSiteButtonPressed(_ sender: Any?) {
         connectToInternet()
     }
     
+    // exit application
     @IBAction func quitAssistant(_ sender: Any?) {
         NSApplication.shared.terminate(sender)
     }
     
+    // Account Setting View Controller Delegate
+    // handle the value passed by account setting view controller
     func updateRainbowAccount(withId id: String, andPassword password: String) {
         userData.rainbowID = id
         userData.rainbowPassword = password
         userData.save()
     }
-    
+
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == "MainToAccountSetting" {
+            // Account Setting View Controller
+            // set main view controller to be the delegate of account setting view controller.
             let destinationViewController = segue.destinationController as! AccountSettingViewController
             destinationViewController.delegate = self
+            
+            // pass on the values for displaying on text field
+            destinationViewController.savedRainbowID = userData.rainbowID
+            destinationViewController.savedRainbowPassword = userData.rainbowPassword
         }
+    }
+    
+    func connectToInternet() {
+        WiFiHelper.testMethod(withId: userData.rainbowID, andPassword: userData.rainbowPassword)
+    }
+    
+    func connect() {
+        print("s")
     }
 }
 
 extension MainPopoverViewCotroller {
+    // return a instance of main popover view controller
     static func freshController() -> MainPopoverViewCotroller {
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
         let identifier = NSStoryboard.SceneIdentifier("MainPopoverViewCotroller")
