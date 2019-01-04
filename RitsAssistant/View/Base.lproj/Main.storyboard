@@ -705,11 +705,14 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zFI-hc-0ne">
-                                <rect key="frame" x="68" y="183" width="75" height="17"/>
-                                <buttonCell key="cell" type="inline" title="Disconnect" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z6n-QN-Ly1">
+                                <rect key="frame" x="68" y="183" width="95" height="17"/>
+                                <buttonCell key="cell" type="inline" title="connectButton" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z6n-QN-Ly1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="connectButtonPressed:" target="vka-AX-cZx" id="oya-BX-qeU"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MH7-va-9KW">
                                 <rect key="frame" x="6" y="139" width="267" height="32"/>

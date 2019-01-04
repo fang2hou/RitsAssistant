@@ -34,7 +34,7 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
         didSet {
             switch self.buttonType {
             case .viewPassword:
-                self.connectButton.title = "View Rits-Webauth password"
+                self.connectButton.title = "Copy Rits-Webauth password"
                 self.connectButton.tag = 0
             case .connect:
                 self.connectButton.title = "Connect"
@@ -75,6 +75,34 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
         connectToInternet()
     }
     
+    @IBAction func connectButtonPressed(_ sender: NSButton) {
+        switch sender.tag {
+        case 0:
+            let pasteBoard = NSPasteboard.general
+            pasteBoard.clearContents()
+            pasteBoard.setString("webauth.ritsumei.ac.jp", forType: .string)
+        case 1:
+            let (result, errString) = WiFiHelper.login(withId: userData.rainbowID, andPassword: userData.rainbowPassword)
+            if result {
+                internetStatus = true
+            } else {
+                if let errorMessage = errString {
+                    print(errorMessage)
+                }
+            }
+        case 2:
+            let (result, errString) = WiFiHelper.logout()
+            if result {
+                internetStatus = false
+            } else {
+                if let errorMessage = errString {
+                    print(errorMessage)
+                }
+            }
+        default:
+            print("nothing")
+        }
+    }
     // exit application
     @IBAction func quitAssistant(_ sender: Any?) {
         NSApplication.shared.terminate(sender)
