@@ -12,6 +12,7 @@ import CoreWLAN
 class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate{
 
     let userData = UserData()
+    let WiFiHelper = RAWiFiHelper()
     
     @IBOutlet weak var statusLabel: NSTextField!
     
@@ -29,15 +30,19 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate{
         
     }
     
+    func connectToInternet() {
+        WiFiHelper.testMethod(withId: userData.rainbowID, andPassword: userData.rainbowPassword)
+    }
+    
     @IBAction func openSiteButtonPressed(_ sender: Any?) {
-        print("pressed")
+        connectToInternet()
     }
     
     @IBAction func quitAssistant(_ sender: Any?) {
         NSApplication.shared.terminate(sender)
     }
     
-    func updateRainbowAccount(id: String, password: String) {
+    func updateRainbowAccount(withId id: String, andPassword password: String) {
         userData.rainbowID = id
         userData.rainbowPassword = password
         userData.save()

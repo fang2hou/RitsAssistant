@@ -15,6 +15,7 @@
 		B888723A21DC934B0073D51E /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = B888723821DC934A0073D51E /* example.png */; };
 		B888723B21DC934B0073D51E /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = B888723921DC934A0073D51E /* Readme.md */; };
 		B888A90C21DF8204007D52A9 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888A90B21DF8204007D52A9 /* UserData.swift */; };
+		B888A90F21DF86CC007D52A9 /* RAWiFiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888A90E21DF86CC007D52A9 /* RAWiFiHelper.swift */; };
 		B8F2A99C21DC733800054091 /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2A99B21DC733800054091 /* MenuBarItem.swift */; };
 		B8F2A99E21DC819C00054091 /* MainPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2A99D21DC819C00054091 /* MainPopoverViewController.swift */; };
 		B8F2A9A121DC89EF00054091 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8F2A99F21DC89EF00054091 /* UserData.xcdatamodeld */; };
@@ -34,6 +35,7 @@
 		B888723921DC934A0073D51E /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		B888A90B21DF8204007D52A9 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		B888A90D21DF859F007D52A9 /* RitsAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RitsAssistant.entitlements; path = ../../../../.Trash/RitsAssistant.entitlements; sourceTree = "<group>"; };
+		B888A90E21DF86CC007D52A9 /* RAWiFiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAWiFiHelper.swift; sourceTree = "<group>"; };
 		B8F2A99B21DC733800054091 /* MenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
 		B8F2A99D21DC819C00054091 /* MainPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopoverViewController.swift; sourceTree = "<group>"; };
 		B8F2A9A021DC89EF00054091 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				B85D282421DA005C00932170 /* AppDelegate.swift */,
 				B8F2A99B21DC733800054091 /* MenuBarItem.swift */,
 				B888A90B21DF8204007D52A9 /* UserData.swift */,
+				B888A90E21DF86CC007D52A9 /* RAWiFiHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				B888A90C21DF8204007D52A9 /* UserData.swift in Sources */,
 				B8F2A99C21DC733800054091 /* MenuBarItem.swift in Sources */,
 				B85D282521DA005C00932170 /* AppDelegate.swift in Sources */,
+				B888A90F21DF86CC007D52A9 /* RAWiFiHelper.swift in Sources */,
 				B85D283821DA060300932170 /* AccountSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

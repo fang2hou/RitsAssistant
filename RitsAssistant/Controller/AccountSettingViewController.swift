@@ -10,7 +10,7 @@ import Cocoa
 import CoreData
 
 protocol AccountSettingDelegate {
-    func updateRainbowAccount(id: String, password: String)
+    func updateRainbowAccount(withId: String, andPassword: String)
 }
 
 class AccountSettingViewController: NSViewController {
@@ -27,7 +27,7 @@ class AccountSettingViewController: NSViewController {
     
     @IBAction func backButtonPressed(_ sender: NSButton) {
         if sender.tag == 1 {
-            delegate?.updateRainbowAccount(id: idText.stringValue, password: passwordText.stringValue)
+            delegate?.updateRainbowAccount(withId: idText.stringValue, andPassword: passwordText.stringValue)
         }
         dismiss(self)
     }
