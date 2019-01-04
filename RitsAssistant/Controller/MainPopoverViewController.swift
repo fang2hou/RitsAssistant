@@ -7,18 +7,48 @@
 //
 
 import Cocoa
-import CoreWLAN
+
+enum connectButtonTypes {
+    case connect
+    case disconnect
+    case viewPassword
+}
 
 class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAssistantWifiHelperDelegate {
 
+    var internetStatus: Bool = false
+    var ritswifiStatus: Bool = false
+    
     let userData = UserData()
     let WiFiHelper = RitsAssistantWiFiHelper()
     
+    var buttonType: connectButtonTypes = .viewPassword {
+        didSet {
+            switch buttonType {
+            case .viewPassword:
+                connectButton.title = "View Rits-Webauth password"
+                connectButton.tag = 0
+            case .connect:
+                connectButton.title = "Connect"
+                connectButton.tag = 1
+            case .disconnect:
+                connectButton.title = "Disconnect"
+                connectButton.tag = 2
+            }
+        }
+    }
+    
     @IBOutlet weak var statusLabel: NSTextField!
+    @IBOutlet weak var statusImage: NSImageView!
+    @IBOutlet weak var connectButton: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        internetStatus = WiFiHelper.internetAvailable
+        ritswifiStatus = WiFiHelper.hasConnectedToRitsWebauth
+
+        updateUI()
     }
     
     @IBAction func testButton(_ sender: Any?) {
@@ -65,8 +95,31 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
         WiFiHelper.testMethod(withId: userData.rainbowID, andPassword: userData.rainbowPassword)
     }
     
-    func connect() {
-        print("s")
+    func internetDidChange(forStatus status: Bool) {
+        internetStatus = status
+        updateUI()
+    }
+    
+    func ritsWifiDidChange(forStatus status: Bool) {
+        ritswifiStatus = status
+        updateUI()
+    }
+    
+    func updateUI() {
+        if ritswifiStatus {
+            if internetStatus {
+                statusLabel.stringValue = "Connected to Internet."
+                buttonType = .disconnect
+            } else {
+                statusLabel.stringValue = "No Internet with Rits-Webauth."
+                buttonType = .connect
+            }
+        } else {
+            statusLabel.stringValue = "Please connect to Rits-Webauth."
+            buttonType = .viewPassword
+        }
+        
+        
     }
 }
 

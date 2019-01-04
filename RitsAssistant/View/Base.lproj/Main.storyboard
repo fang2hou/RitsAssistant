@@ -843,6 +843,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="connectButton" destination="zFI-hc-0ne" id="PDD-ZG-1Rx"/>
+                        <outlet property="statusImage" destination="TV0-Ti-xma" id="Whs-1k-NfU"/>
                         <outlet property="statusLabel" destination="hTO-GQ-0c0" id="4b1-tg-cNI"/>
                     </connections>
                 </viewController>

@@ -8,13 +8,7 @@
 
 import Foundation
 import Alamofire
-
-enum networkStatus {
-    case ethernetOrWiFi
-    case wwan
-    case unreachable
-    case unknown
-}
+import CoreWLAN
 
 enum fakeUserAgent: String {
     case Safari = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15"
@@ -22,20 +16,22 @@ enum fakeUserAgent: String {
 }
 
 protocol RitsAssistantWifiHelperDelegate {
-    func connect()
+    func internetDidChange(forStatus: Bool)
+    func ritsWifiDidChange(forStatus: Bool)
 }
 
-class RitsAssistantWiFiHelper {
+class RitsAssistantWiFiHelper: CWEventDelegate {
+    private let WIFI_NAME = "FzWiFi"//"Rits-Webauth"
     
     private var headers: HTTPHeaders = ["User-Agent": fakeUserAgent.Safari.rawValue]
+    private let wifiClient = CWWiFiClient()
     private let internetMonitor = NetworkReachabilityManager(host: "8.8.8.8")
-    private let ritsWebauthMonitor = NetworkReachabilityManager(host: "webauth.ritsumei.ac.jp")
     
     var delegate: RitsAssistantWifiHelperDelegate?
     
-    var status: networkStatus {
+    var internetAvailable: Bool {
         didSet {
-            print("network changed to \(status)")
+            delegate?.internetDidChange(forStatus: internetAvailable)
         }
     }
     
@@ -46,26 +42,50 @@ class RitsAssistantWiFiHelper {
         }
     }
     
-    var hasConnectedToRitsWebauth: Bool
+    var hasConnectedToRitsWebauth: Bool {
+        didSet {
+            if hasConnectedToRitsWebauth {
+                internetMonitor?.startListening()
+            } else {
+                internetMonitor?.stopListening()
+                internetAvailable = false
+            }
+            
+            delegate?.ritsWifiDidChange(forStatus: hasConnectedToRitsWebauth)
+        }
+    }
     
     init() {
-        status = .unknown
+        internetAvailable = false
         hasConnectedToRitsWebauth = false
-        
+
+        // listener init
         internetMonitor?.listener = { status in
-            switch status {
+            switch status{
             case .reachable(.ethernetOrWiFi):
-                self.status = .ethernetOrWiFi
-            case .reachable(.wwan):
-                self.status = .wwan
-            case .notReachable:
-                self.status = .unreachable
-            case .unknown:
-                self.status = .unknown
+                self.internetAvailable = true
+            default:
+                self.internetAvailable = false
             }
         }
         
-        internetMonitor?.startListening()
+        // check wifi ssid
+        if let wifiInterfaceNames = CWWiFiClient.interfaceNames() {
+            // get names of all wifi interface
+            for wifiInterfaceName in wifiInterfaceNames {
+                ssidDidChangeForWiFiInterface(withName: wifiInterfaceName)
+            }
+        }
+        
+        // handle if ssid changed
+        wifiClient.delegate = self
+        
+        // start to monitor if wifi ssid changed
+        do {
+            try wifiClient.startMonitoringEvent(with: .ssidDidChange)
+        } catch {
+            print("Cannot monitor ssid change event: \(error)")
+        }
     }
     
     func testMethod(withId id: String, andPassword password: String) {
@@ -84,6 +104,16 @@ class RitsAssistantWiFiHelper {
             case .failure(let error):
                 print("Alamofire request failed. \n\(error)")
                 
+            }
+        }
+    }
+    
+    func ssidDidChangeForWiFiInterface(withName interfaceName: String) {
+        if let wifiName = wifiClient.interface(withName: interfaceName)!.ssid() {
+            if wifiName == WIFI_NAME {
+                hasConnectedToRitsWebauth = true
+            } else {
+                hasConnectedToRitsWebauth = false
             }
         }
     }
