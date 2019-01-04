@@ -19,7 +19,10 @@ class AccountViewController: NSViewController {
         // Do view setup here.
     }
     
-    @IBAction func backToMainPopover(_ sender: Any?) {
+    @IBAction func backButtonPressed(_ sender: NSButton) {
+        if sender.tag == 1 {
+            print("save data.")
+        }
         dismiss(self)
     }
 }

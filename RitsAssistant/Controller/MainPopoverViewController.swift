@@ -6,9 +6,7 @@
 //  Copyright © 2019 Zhou Fang. All rights reserved.
 //
 
-import Foundation
 import Cocoa
-import Alamofire
 import CoreWLAN
 
 class MainPopoverViewCotroller: NSViewController {
@@ -18,23 +16,15 @@ class MainPopoverViewCotroller: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if NetworkReachabilityManager()!.isReachableOnEthernetOrWiFi {
-            print("Yes! internet is available.")
-            guard let SSID = CWWiFiClient.shared().interface()?.ssid() else {
-                print("cannot get wifi name.")
-                return
-            }
-            if SSID != "FzWiFi" {
-                statusLabel.stringValue = "Please connect to Rits-Webauth."
-            } else {
-                // TODO: Internet confirmation
-                print("placeholder")
-            }
-        }
     }
     
     @IBAction func testButton(_ sender: Any?) {
-        statusLabel.stringValue = "test text test text test text test text"
+        if statusLabel.stringValue != "test text test text test text test text" {
+            statusLabel.stringValue = "test text test text test text test text"
+        } else {
+            statusLabel.stringValue = "test"
+        }
+        
     }
     
     @IBAction func openSiteButtonPressed(_ sender: Any?) {

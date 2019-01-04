@@ -758,7 +758,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="openAccountSetting:" target="vka-AX-cZx" id="jVj-Ch-GpG"/>
+                                            <segue destination="8HZ-oV-XKa" kind="modal" id="u30-Df-P3X"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -850,10 +850,10 @@
             </objects>
             <point key="canvasLocation" x="-682" y="16"/>
         </scene>
-        <!--Account View Controller-->
+        <!--Account Setting-->
         <scene sceneID="eSx-Pq-r13">
             <objects>
-                <viewController storyboardIdentifier="AccountViewController" id="8HZ-oV-XKa" customClass="AccountViewController" customModule="RitsAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Account Setting" storyboardIdentifier="AccountViewController" id="8HZ-oV-XKa" customClass="AccountViewController" customModule="RitsAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Rlr-S0-epg">
                         <rect key="frame" x="0.0" y="0.0" width="263" height="133"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -945,15 +945,18 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="backToMainPopover:" target="8HZ-oV-XKa" id="dEf-6C-mO9"/>
+                                            <action selector="backButtonPressed:" target="8HZ-oV-XKa" id="dEf-6C-mO9"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LcF-RJ-KdY">
+                                    <button verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="LcF-RJ-KdY">
                                         <rect key="frame" x="82" y="-7" width="163" height="32"/>
                                         <buttonCell key="cell" type="push" title="Save &amp; Back" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DZ0-VR-GdC">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="backButtonPressed:" target="8HZ-oV-XKa" id="Mjk-Pb-K0C"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -988,7 +991,7 @@
                 </viewController>
                 <customObject id="Xxd-Qk-SqC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-395" y="-37"/>
+            <point key="canvasLocation" x="-309" y="-38"/>
         </scene>
     </scenes>
     <resources>
