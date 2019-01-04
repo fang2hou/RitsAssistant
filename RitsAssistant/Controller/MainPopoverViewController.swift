@@ -21,6 +21,7 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
             updateUI()
         }
     }
+    
     var ritswifiStatus: Bool = false {
         didSet {
             updateUI()
@@ -62,13 +63,13 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
     }
     
     @IBAction func testButton(_ sender: Any?) {
-        if statusLabel.stringValue != "test text test text test text test text" {
-            statusLabel.stringValue = "test text test text test text test text"
-        } else {
-            statusLabel.stringValue = "test"
+        if let a = WiFiHelper.internetMonitor?.isReachable {
+            if a {
+                print("online")
+            } else {
+                print("offline")
+            }
         }
-        
-        WiFiHelper.userAgent = .Chrome
     }
     
     @IBAction func openSiteButtonPressed(_ sender: Any?) {
@@ -103,6 +104,7 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
             print("nothing")
         }
     }
+    
     // exit application
     @IBAction func quitAssistant(_ sender: Any?) {
         NSApplication.shared.terminate(sender)

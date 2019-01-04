@@ -26,8 +26,8 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
     
     private var headers: HTTPHeaders = ["User-Agent": fakeUserAgent.Safari.rawValue]
     private let wifiClient = CWWiFiClient()
-    private let internetMonitor = NetworkReachabilityManager(host: "8.8.8.8")
     
+    let internetMonitor = NetworkReachabilityManager(host: "8.8.8.8")
     var delegate: RitsAssistantWifiHelperDelegate?
     
     var internetAvailable: Bool {
@@ -51,7 +51,6 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
     
     var userAgent: fakeUserAgent = .Safari {
         didSet {
-            print(userAgent.rawValue)
             headers.updateValue(userAgent.rawValue, forKey: "User-Agent")
         }
     }
