@@ -22,7 +22,7 @@ protocol RitsAssistantWifiHelperDelegate {
 
 class RitsAssistantWiFiHelper: CWEventDelegate {
     private let WIFI_NAME = "Rits-Webauth"
-    private let AUTH_URL = "https://webauth.ritsumei.ac.jp"
+    private let AUTH_URL = "http://webauth.ritsumei.ac.jp"
     
     private var headers: HTTPHeaders = ["User-Agent": fakeUserAgent.Safari.rawValue]
     private let wifiClient = CWWiFiClient()
@@ -99,12 +99,12 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
             "err_flag": "0"
         ]
         
-        let logoutURL = AUTH_URL + "/login.html"
+        let loginURL = AUTH_URL + "/login.html"
         
         var result = false
         var errString: String?
         
-        Alamofire.request(logoutURL, method: .post, parameters: params, headers: headers).responseString {
+        Alamofire.request(loginURL, method: .post, parameters: params, headers: headers).responseString {
             response in
             switch response.result {
             case .success(let data):
