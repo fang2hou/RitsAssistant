@@ -16,17 +16,8 @@ enum connectButtonTypes {
 
 class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAssistantWifiHelperDelegate {
 
-    var internetStatus: Bool = false {
-        didSet {
-            updateUI()
-        }
-    }
-    
-    var ritswifiStatus: Bool = false {
-        didSet {
-            updateUI()
-        }
-    }
+    var internetStatus: Bool = false { didSet { updateUI() } }
+    var ritswifiStatus: Bool = false { didSet { updateUI() } }
     
     let userData = UserData()
     let WiFiHelper = RitsAssistantWiFiHelper()
@@ -63,12 +54,10 @@ class MainPopoverViewCotroller: NSViewController, AccountSettingDelegate, RitsAs
     }
     
     @IBAction func testButton(_ sender: Any?) {
-        if let a = WiFiHelper.internetMonitor?.isReachable {
-            if a {
-                print("online")
-            } else {
-                print("offline")
-            }
+        if WiFiHelper.internetAvailable {
+            print("online")
+        } else {
+            print("offline")
         }
     }
     

@@ -22,13 +22,14 @@ protocol RitsAssistantWifiHelperDelegate {
 
 class RitsAssistantWiFiHelper: CWEventDelegate {
     private let WIFI_NAME = "Rits-Webauth"
-    private let AUTH_URL = "http://webauth.ritsumei.ac.jp"
+    private let AUTH_URL = "https://webauth.ritsumei.ac.jp"
     
     private var headers: HTTPHeaders = ["User-Agent": fakeUserAgent.Safari.rawValue]
     private let wifiClient = CWWiFiClient()
     
-    let internetMonitor = NetworkReachabilityManager(host: "8.8.8.8")
     var delegate: RitsAssistantWifiHelperDelegate?
+    
+    var timer:Timer!
     
     var internetAvailable: Bool {
         didSet {
@@ -38,13 +39,6 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
     
     var hasConnectedToRitsWebauth: Bool {
         didSet {
-            if hasConnectedToRitsWebauth {
-                internetMonitor?.startListening()
-            } else {
-                internetMonitor?.stopListening()
-                internetAvailable = false
-            }
-            
             delegate?.ritsWifiDidChange(forStatus: hasConnectedToRitsWebauth)
         }
     }
@@ -58,16 +52,8 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
     init() {
         internetAvailable = false
         hasConnectedToRitsWebauth = false
-
-        // listener init
-        internetMonitor?.listener = { status in
-            switch status{
-            case .reachable(.ethernetOrWiFi):
-                self.internetAvailable = true
-            default:
-                self.internetAvailable = false
-            }
-        }
+        
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(checkConnecToInternet), userInfo: nil, repeats: true)
         
         // check wifi ssid
         if let wifiInterfaceNames = CWWiFiClient.interfaceNames() {
@@ -87,6 +73,8 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
         } catch {
             print("Cannot monitor ssid change event: \(error)")
         }
+        
+        checkConnecToInternet()
     }
     
     
@@ -108,8 +96,10 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
             response in
             switch response.result {
             case .success(let data):
+                print(data)
                 if data.range(of: "Login Successful") != nil {
                     result = true
+                    self.internetAvailable = true
                 } else if data.range(of: "statusCode=1") != nil {
                     errString = "You are already logged in. No further action is required on your part."
                 } else if data.range(of: "statusCode=2") != nil {
@@ -121,6 +111,7 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
                 } else if data.range(of: "statusCode=5") != nil {
                     errString = "Invalid User ID and password. Please try again."
                 }
+
             case .failure(_):
                 errString = "Network issue has occured."
             }
@@ -146,7 +137,8 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
             switch response.result {
             case .success(let data):
                 if data.range(of: "To complete the log off process") != nil {
-                    result =  true
+                    result = true
+                    self.internetAvailable = false
                 } else {
                     errString = "Unknown issue."
                 }
@@ -156,27 +148,6 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
         }
         
         return (result, errString)
-    }
-    
-    
-    func testMethod(withId id: String, andPassword password: String) {
-        let testURL = "https://httpbin.org/post"
-        
-        let params: [String:String] = [
-            "id": id,
-            "password": password
-        ]
-        
-        Alamofire.request(testURL, method: .post, parameters: params, headers: headers).responseString {
-            response in
-            switch response.result {
-            case .success(let data):
-                print(data)
-            case .failure(let error):
-                print("Alamofire request failed. \n\(error)")
-                
-            }
-        }
     }
     
     func ssidDidChangeForWiFiInterface(withName interfaceName: String) {
@@ -195,6 +166,21 @@ class RitsAssistantWiFiHelper: CWEventDelegate {
         let wifiState = wifiClient.interface(withName: interfaceName)!.powerOn()
         if !wifiState {
             hasConnectedToRitsWebauth = false
+        }
+    }
+    
+    @objc func checkConnecToInternet() {
+        let checkURL = "https://httpbin.org/ip"
+        Alamofire.request(checkURL).responseString { (response) in
+            switch response.result {
+            case .success(let data):
+                 if (data.range(of: "origin") != nil) {
+                    self.internetAvailable = true
+                } else {
+                  self.internetAvailable = false
+                }
+            default: self.internetAvailable = false
+            }
         }
     }
 }
